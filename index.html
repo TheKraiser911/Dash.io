@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Dash.io - Geometry Edition</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="logo.png">
+    <!-- Fuente Orbitron para la estética Neón / Arcade -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Menú de Inicio -->
+    <div id="start-menu">
+        <div class="menu-card">
+            <h1>DASH.IO</h1>
+            
+            <!-- Logo del juego en el menú -->
+            <div style="margin: 10px 0; text-align: center;">
+                <img src="logo.png" alt="Dash.io Logo" style="width: 100px; height: 100px; border-radius: 12px; border: 2px solid #00ffff; box-shadow: 0 0 12px rgba(0, 255, 255, 0.4); object-fit: cover;">
+            </div>
+
+            <input type="text" id="nickname-input" placeholder="Tu Apodo..." maxlength="12" autofocus autocomplete="off">
+            
+            <!-- Selector de Modo de Control -->
+            <div class="settings-container" style="text-align: left; margin-bottom: 8px;">
+                <label for="device-select" style="font-size: 0.75rem; color: #a5b1c2; display: block; margin-bottom: 4px;">Modo de Control:</label>
+                <select id="device-select" style="width: 100%; background: #18152e; border: 1px solid rgba(0, 255, 255, 0.5); color: #fff; padding: 6px; border-radius: 6px; font-family: 'Orbitron', sans-serif;">
+                    <option value="pc" selected>💻 PC (Mouse)</option>
+                    <option value="phone">📱 Teléfono (Táctil)</option>
+                    <option value="tablet">📟 Tablet / Pantalla Dinámica</option>
+                </select>
+            </div>
+
+            <!-- Selector de Calidad Gráfica -->
+            <div class="settings-container" style="text-align: left; margin-bottom: 8px;">
+                <label for="graphics-select" style="font-size: 0.75rem; color: #a5b1c2; display: block; margin-bottom: 4px;">Calidad Gráfica:</label>
+                <select id="graphics-select" style="width: 100%; background: #18152e; border: 1px solid rgba(0, 255, 255, 0.5); color: #fff; padding: 6px; border-radius: 6px; font-family: 'Orbitron', sans-serif;">
+                    <option value="high" selected>Alto (Luces Neón / Glow)</option>
+                    <option value="low">Bajo (Sin Luces / Anti-Lag)</option>
+                </select>
+            </div>
+
+            <!-- Selector de Música de Fondo -->
+            <div class="settings-container" style="text-align: left; margin-bottom: 12px;">
+                <label for="music-select" style="font-size: 0.75rem; color: #a5b1c2; display: block; margin-bottom: 4px;">Música de Fondo:</label>
+                <select id="music-select" style="width: 100%; background: #18152e; border: 1px solid rgba(0, 255, 255, 0.5); color: #fff; padding: 6px; border-radius: 6px; font-family: 'Orbitron', sans-serif;">
+                    <option value="random" selected>🔀 Aleatorio (Todas)</option>
+                    <option value="0">🎵 Tema 1</option>
+                    <option value="1">🎵 Tema 2</option>
+                    <option value="2">🎵 Tema 3</option>
+                </select>
+            </div>
+
+            <button id="start-btn">JUGAR</button>
+
+            <!-- Sección de Créditos y Nota Personal -->
+            <div class="credits-box" style="margin-top: 15px; background: rgba(7, 5, 16, 0.75); border: 1px solid rgba(0, 255, 255, 0.3); padding: 12px; border-radius: 8px; text-align: left;">
+                <p style="color: #00ffff; font-size: 0.8rem; font-family: 'Orbitron', sans-serif; font-weight: bold; margin-bottom: 6px;">
+                    💻 Creador: Leonardo Paz
+                </p>
+                <p style="color: #a5b1c2; font-size: 0.72rem; line-height: 1.4; margin: 0; font-family: sans-serif;">
+                    "He durado medio mes programando este juego y me he esforzado en crearlo. Aunque no es el primero, esto es una práctica; pronto lanzaré juegos mucho mejores."
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Menú de Game Over / Resultados Finales -->
+    <div id="gameover-menu" class="hidden">
+        <div class="menu-card">
+            <h1>FIN DEL JUEGO</h1>
+            <p>HAS PERDIDO TODAS TUS VIDAS</p>
+            
+            <div class="results-box">
+                <p>PUESTO FINAL: <span id="res-rank">#1</span></p>
+                <p>PUNTUACIÓN TOTAL: <span id="res-score">0</span></p>
+                <p>BOTS ELIMINADOS: <span id="res-kills">0</span></p>
+            </div>
+
+            <button id="restart-btn">JUGAR DE NUEVO</button>
+        </div>
+    </div>
+
+    <!-- HUD Overlay (Información Superior) -->
+    <div id="game-ui" class="hidden">
+        <div class="hud">
+            <span id="player-name-display">PLAYER</span> | 
+            SCORE: <span id="score-display">0</span> |
+            SPEED: <span id="speed-display">x1</span> |
+            JUGADORES: <span id="players-count">30</span>
+        </div>
+    </div>
+
+    <!-- Minimapa (Esquina superior derecha) -->
+    <canvas id="minimapCanvas" class="hidden" width="180" height="180"></canvas>
+
+    <!-- Canvas Principal para el Juego -->
+    <canvas id="gameCanvas"></canvas>
+
+    <!-- Script Principal del Juego -->
+    <script src="game.js"></script>
+</body>
+</html>
